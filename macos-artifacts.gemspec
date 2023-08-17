@@ -3,12 +3,13 @@
 require_relative "lib/macos/artifacts/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "macos-artifacts"
-  spec.version = Macos::Artifacts::VERSION
-  spec.authors = ["nic scott"]
-  spec.email = ["nls.inbox@gmail.com"]
+  spec.name     = "macos-artifacts"
+  spec.version  = Macos::Artifacts::VERSION
+  spec.authors  = ["nic scott"]
+  spec.email    = ["nls.inbox@gmail.com"]
+  spec.summary  = %q{A collection of macOS artifacts}
   spec.homepage = "https://github.com/nlscott/macos-artifacts"
-  spec.license = "MIT"
+  spec.license  = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
 
 
