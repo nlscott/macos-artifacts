@@ -4,7 +4,7 @@ $currentUser = ENV['USER']
 
 module Macos
   module Artifacts
-    module Logs
+    module Files
       def self.systemLaunchAgents
         $systemLaunchAgentsPath = "/Library/LaunchAgents"
         $launchAgentDir = Dir.entries("#{$systemLaunchAgentsPath}")
@@ -107,6 +107,18 @@ module Macos
             end
           end
         end
+      end
+
+      def self.systemApplicationSupport
+        systemApplicationSupport = "/Library/Application Support"
+          if Dir.exist?("#{systemApplicationSupport}")
+            puts "System Application Support:"
+            Dir.entries("#{systemApplicationSupport}").each do  | filename |
+              if filename != "." && filename != ".." && filename != ".DS_Store"
+                puts "  #{systemApplicationSupport}/#{filename}"
+              end
+            end
+          end
       end
 
     end

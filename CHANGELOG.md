@@ -1,6 +1,11 @@
 # Change Log
 
 ---
+## version 0.4.0
+- UPDATE: refactor
+
+
+---
 ## version 0.3.0
 - UPDATE: break `logs` module out to it's own file
 
