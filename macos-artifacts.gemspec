@@ -27,4 +27,5 @@ Gem::Specification.new do |spec|
 
   # Uncomment to register a new dependency of your gem
   spec.add_development_dependency "bundler", ">= 2.2.33"
+  spec.add_development_dependency "CFPropertyList", ">= 3.0.6"
 end
