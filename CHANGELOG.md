@@ -1,6 +1,12 @@
 # Change Log
 
 ---
+## version 0.4.2
+- Add: crontab to `files` module
+- Add: hosts file to `files` module
+
+
+---
 ## version 0.4.1
 - Add: Preference files for system and users
 

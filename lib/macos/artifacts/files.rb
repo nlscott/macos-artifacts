@@ -155,8 +155,26 @@ module Macos
             end
           end
           filesArray.sort.each do |filename|
-            puts "#{filename}"
+            puts "  #{filename}"
           end
+        end
+      end
+
+      def self.cronTabs
+        cronTab = `/usr/bin/crontab -l`.strip
+        puts "crontabs:"
+        if cronTab.empty?
+          puts "  No current crontabs"
+        else
+          puts "  #{cronTab}"
+        end
+      end
+      
+      def self.etcHosts
+        hostfiles = `cat /etc/hosts`.split("\n")
+        puts "Hosts File:"
+        hostfiles.each do |line|
+          puts "  #{line}"
         end
       end
 
