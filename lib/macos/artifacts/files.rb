@@ -5,6 +5,7 @@ $currentUser = ENV['USER']
 module Macos
   module Artifacts
     module Files
+
       def self.systemLaunchAgents
         $systemLaunchAgentsPath = "/Library/LaunchAgents"
         $launchAgentDir = Dir.entries("#{$systemLaunchAgentsPath}")
@@ -119,6 +120,44 @@ module Macos
               end
             end
           end
+      end
+
+      def self.libraryPreferences
+        systemApplicationSupport = "/Library/Preferences"
+        if Dir.exist?("#{systemApplicationSupport}")
+          puts "Library Preferences:"
+          Dir.entries("#{systemApplicationSupport}").each do  | filename |
+            if filename != "." && filename != ".." && filename != ".DS_Store"
+              puts "  #{systemApplicationSupport}/#{filename}"
+            end
+          end
+        end
+      end
+
+      def self.userLibraryPreferences
+        userArray = []
+        Dir.entries("/Users").each do |username|
+          if !username.start_with?(".")
+            if username != "Shared" and username != "Guest"
+              userArray.push("#{username}")
+            end
+          end
+        end
+        userArray.each do |username|
+          filesArray = []
+          userPreferences = "/Users/#{username}/Library/Preferences"
+          if Dir.exist?("#{userPreferences}")
+            puts "#{username} Preferences:"
+            Dir.entries("#{userPreferences}").each do  | filename |
+              if filename != "." && filename != ".." && filename != ".DS_Store"
+                filesArray.push("#{userPreferences}/#{filename}")
+              end
+            end
+          end
+          filesArray.sort.each do |filename|
+            puts "#{filename}"
+          end
+        end
       end
 
     end

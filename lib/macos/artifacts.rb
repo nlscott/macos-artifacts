@@ -96,8 +96,7 @@ module Macos
 
     def self.lockStatus
       status = `system_profiler SPHardwareDataType | grep "Activation Lock Status" | cut -d ":" -f2 | xargs`.strip
-      puts "Activation Lock Status:"
-      puts "  #{status}"
+      puts "Activation Lock Status: #{status}"
     end
 
     def self.screenlockStatus
