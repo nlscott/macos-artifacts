@@ -1,6 +1,13 @@
 # Change Log
 
 ---
+## version 0.4.3
+- Add: processCPU to `state` module
+- Add:  processMemoery to `state` module
+
+
+
+---
 ## version 0.4.2
 - Add: crontab to `files` module
 - Add: hosts file to `files` module

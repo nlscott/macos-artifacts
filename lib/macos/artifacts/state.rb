@@ -86,6 +86,75 @@ module Macos
           end
        end
       end
+
+      def self.processCPU
+        $psArray = []
+        $psHash = {}
+        processes = `ps axc -o user,pid,%cpu,%mem,start,time,command`.split("\n")
+        processes.shift()
+      
+        processes.each do |item|
+          data = item.split(" ")
+          psHash = {
+            :user => "#{data[0].strip}",
+            :pid => "#{data[1].strip}",
+            :cpu => "#{data[2].to_f}",
+            :mem => "#{data[3].strip}",
+            :start => "#{data[4].strip}",
+            :time => "#{data[5].strip}",
+            :command => "#{data[6].strip}"
+          }
+          $psArray.push(psHash)
+        end
+      
+        $psArray.sort_by! { |hash| hash[:cpu] }
+        puts "Top 10 CPU Processes:"
+      
+        $psArray.last(10).reverse.each do |ps|
+          ps.each do |key,value|
+            if key.to_s == "user"
+               puts "  #{key}: #{value}"
+            else
+              puts "    #{key}: #{value}"
+            end
+          end
+        end
+      end
+
+      def self.processMemory
+        $psArray = []
+        $psHash = {}
+        processes = `ps axc -o user,pid,%cpu,%mem,start,time,command`.split("\n")
+        processes.shift()
+      
+        processes.each do |item|
+          data = item.split(" ")
+          psHash = {
+            :user => "#{data[0].strip.to_s}",
+            :pid => "#{data[1].strip}",
+            :cpu => "#{data[2].to_f}",
+            :mem => "#{data[3].strip}",
+            :start => "#{data[4].strip}",
+            :time => "#{data[5].strip}",
+            :command => "#{data[6].strip}"
+          }
+          $psArray.push(psHash)
+        end
+      
+        $psArray.sort_by! { |hash| hash[:mem] }
+        puts "Top 10 Memory Processes:"
+      
+        $psArray.last(10).reverse.each do |ps|
+          ps.each do |key,value|
+            if key.to_s == "user"
+               puts "  #{key}: #{value}"
+            else
+              puts "    #{key}: #{value}"
+            end
+          end
+        end
+      end
+
     end
   end
 end
