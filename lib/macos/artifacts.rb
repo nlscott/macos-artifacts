@@ -3,6 +3,7 @@
 require_relative "artifacts/version"
 require_relative "artifacts/state"
 require_relative "artifacts/files"
+require_relative "artifacts/apps"
 require 'cfpropertylist'
 
 $currentUser = ENV['USER'] 
@@ -65,7 +66,7 @@ module Macos
     end
 
     def self.publicIP
-      ip = `dig -4 TXT +short o-o.myaddr.l.google.com $ns1.google.com | tr -d '"'`.strip
+      ip = `dig -4 TXT +short o-o.myaddr.l.google.com ns1.google.com | tr -d '"'`.strip
       puts "Public IP: #{ip}"
     end
 

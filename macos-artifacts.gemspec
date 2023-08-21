@@ -3,6 +3,7 @@
 require_relative "lib/macos/artifacts/version"
 require_relative "lib/macos/artifacts/state"
 require_relative "lib/macos/artifacts/files"
+require_relative "lib/macos/artifacts/apps"
 
 Gem::Specification.new do |spec|
   spec.name     = "macos-artifacts"

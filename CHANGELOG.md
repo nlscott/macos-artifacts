@@ -1,10 +1,14 @@
 # Change Log
 
 ---
+## version 0.5.0
+- Add: `apps` module
+
+
+---
 ## version 0.4.3
 - Add: processCPU to `state` module
 - Add:  processMemoery to `state` module
-
 
 
 ---
