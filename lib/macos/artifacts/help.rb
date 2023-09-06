@@ -64,7 +64,6 @@ module Macos
         puts "  Macos::Artifacts::Apps::appInstallLocations         outputs list of appliction install paths"
         puts ""
       end
-      
     end
   end
 end

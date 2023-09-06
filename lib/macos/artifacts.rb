@@ -4,6 +4,7 @@ require_relative "artifacts/version"
 require_relative "artifacts/state"
 require_relative "artifacts/files"
 require_relative "artifacts/apps"
+require_relative "artifacts/help"
 require 'cfpropertylist'
 
 $currentUser = ENV['USER'] 

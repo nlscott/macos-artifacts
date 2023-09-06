@@ -3,7 +3,7 @@
 ## Summary:
 macOS Artifacts outpus a lot of information, from static facts about a machine (serial number, os verion), to outputs of file directories that may be usefull for discovery or reconnaissance (launchagenets and launchdaemons), to the current state of installed system extesnions.
 
-Output is general text. copy and save to a .yaml format if you want syntax highlighting.
+Output is simple text making it able to be scraped up by an MDM or EDR solution to aid in an investiagtion. You can copy and save to a .yaml format if you want syntax highlighting, though output format is not strictly yaml.
 
 ---
 ## Installation:
@@ -57,7 +57,7 @@ Macos::Artifacts::State::processMemory
 ```yaml
 #Example output of all Macos::Artifacts commands
 Host Name: nics-mac
-Serial: X57CLJT7CV
+Serial: X57CLJ67CV
 Version: 13.5.1
 Build: 22F82
 Kernel: 22.5.0
@@ -65,8 +65,8 @@ Model Name: MacBook Pro
 Model ID: MacBookPro18,3
 Chip: Apple M1 Pro
 Architecture: arm64
-Memory: 32 GB
-Hardware UID: 6AE03961-13A4-5418-BA2A-87FF9075FA91
+Memory: 16 GB
+Hardware UID: 6AE03561-13A4-5218-BA2A-87FF9075FA91
 Public IP: 172.76.37.139
 Private IP: 192.68.68.68
 SIP Status: enabled
@@ -80,5 +80,13 @@ Software Updates:
   Auto Install: 1
   Install Config Data: 1
   Install Critical Updates: 1
+```
+
+
+
+For all options run the below and check the output.
+
+```ruby
+Macos::Artifacts::Help::options
 ```
 
