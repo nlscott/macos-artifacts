@@ -1,5 +1,16 @@
 # Change Log
 
+
+---
+## version 0.6.0
+- Add: `help` to output options. User `Macos::Artifacts::Help::options`
+
+---
+## version 0.5.2
+- Add: `state` list of open network connections
+- Add: `files` directory output for /private/tmp
+- Add: `files` directory output for /Users/Shared
+
 ---
 ## version 0.5.0
 - Add: `apps` module

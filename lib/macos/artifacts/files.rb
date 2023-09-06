@@ -178,6 +178,102 @@ module Macos
         end
       end
 
+      def self.usrLocal
+        path = "/usr/local"
+        
+        puts "#{path} Directory:"
+        if File.exists?("#{path}")
+          output = `ls -al #{path}`.split("\n")
+          output.shift
+          output.each do |item|
+            puts "  #{item}"
+          end
+        else
+          puts "  No such file or directory"
+        end
+      end
+
+      def self.usrLocalBin
+        path = "/usr/local/bin"
+        
+        puts "#{path} Directory:"
+        if File.exists?("#{path}")
+          output = `ls -al #{path}`.split("\n")
+          output.shift
+          output.each do |item|
+            puts "  #{item}"
+          end
+        else
+          puts "  No such file or directory"
+        end
+      end
+
+      def self.usrLocalSbin
+        path = "/usr/local/sbin"
+        
+        puts "#{path} Directory:"
+        if File.exists?("#{path}")
+          output = `ls -al #{path}`.split("\n")
+          output.shift
+          output.each do |item|
+            puts "  #{item}"
+          end
+        else
+          puts "  No such file or directory"
+        end
+      end
+
+      def self.usersShared
+        path = "/Users/Shared"
+        
+        puts "#{path} Directory:"
+        if File.exists?("#{path}")
+          output = `ls -al #{path}`.split("\n")
+          output.shift
+          output.each do |item|
+            puts "  #{item}"
+          end
+        else
+          puts "  No such file or directory"
+        end
+      end
+
+      def self.privateTmp
+        path = "/private/tmp"
+        
+        puts "#{path} Directory:"
+        if File.exists?("#{path}")
+          output = `ls -al #{path}`.split("\n")
+          output.shift
+          output.each do |item|
+            puts "  #{item}"
+          end
+        else
+          puts "  No such file or directory"
+        end
+      end
+
+      def self.scriptInstallLocations
+        history1 = `mdfind "kMDItemKind == 'Shell Script'"`.split("\n")
+        puts "Script Install Locations:"
+        history1.each do |item|
+          if ! item.start_with?("/System", "/Library/Developer", "/usr/share", "/usr/bin", "/Library/Ruby")
+            if ! item.include? "/Library/Application Support/Code/User/History"
+                puts "  #{item.strip}"
+            end
+          end
+        end
+      
+        history = `mdfind "kMDItemKind == '* Source'"`.split("\n")
+        history.each do |item|
+          if ! item.start_with?("/System", "/Library/Developer", "/usr/share", "/usr/bin", "/Library/Ruby")
+            if ! item.include? "/Library/Application Support/Code/User/History"
+              puts "  #{item.strip}"
+            end
+          end
+        end
+      end
+
     end
   end
 end

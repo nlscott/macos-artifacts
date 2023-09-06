@@ -1,0 +1,70 @@
+# frozen_string_literal: true
+
+module Macos
+  module Artifacts
+    module Help
+      def self.options
+        puts ""
+        puts "Summary: 
+        Artifact is an easy way to output a lot of facts and states about a macOS machine. 
+        It's meant to be quick text output so it can be returned via an MDM or EDR solution to aid in investigations"
+        puts ""
+        puts "Macos::Artifact Usage:"
+        puts "  Macos::Artifacts::computerName                      uses scutil to return computername"
+        puts "  Macos::Artifacts::serial                            returns serial number from system_profiler"
+        puts "  Macos::Artifacts::version                           uses sw_vers to return os version"
+        puts "  Macos::Artifacts::build                             uses sw_vers to return buld number"
+        puts "  Macos::Artifacts::kernel                            uses uname to return kernel"
+        puts "  Macos::Artifacts::modelName                         users system_profiler to return model name"
+        puts "  Macos::Artifacts::modelID                           users system_profiler to return model id"
+        puts "  Macos::Artifacts::chip                              users system_profiler to return hardware chip"
+        puts "  Macos::Artifacts::architecture                      users uanme to return hardware architecture"
+        puts "  Macos::Artifacts::memory                            users system_profiler to return memory installed"
+        puts "  Macos::Artifacts::hardwareUID                       users system_profiler to return hardware id"
+        puts "  Macos::Artifacts::publicIP                          public ip returned by dig"
+        puts "  Macos::Artifacts::privateIP                         private ip returned by ipconfig"
+        puts "  Macos::Artifacts::sipStatus                         returns sip status from csrutil"
+        puts "  Macos::Artifacts::filevaultStatus                   returns filevault status from fdesetup"
+        puts "  Macos::Artifacts::firewallStatus                    read firewall status from com.apple.alf"
+        puts "  Macos::Artifacts::screenlockStatus                  checks screenlock status and time" 
+        puts "  Macos::Artifacts::lockStatus                        returns Activation Lock Status"
+        puts "  Macos::Artifacts::softwareUpdates                   returns machines softwareupate settings"
+        puts ""
+        puts "Macos::Artifacts::Files Usage:"
+        puts "  Macos::Artifacts::Files::systemLaunchAgents         list output of installed /Library/LaunchAgents"
+        puts "  Macos::Artifacts::Files::systemLaunchDaemons        list output of installed /Library/LaunchDaemons"
+        puts "  Macos::Artifacts::Files::userLaunchAgents           list output of Users ~/Library/LaunchAgents"
+        puts "  Macos::Artifacts::Files::listUsersAccountDirectory  list output of users home directory"
+        puts "  Macos::Artifacts::Files::systemApplicationSupport   list output of /Library/Application Support"
+        puts "  Macos::Artifacts::Files::userApplicationSupport     list output of ~/Library/Application Support"
+        puts "  Macos::Artifacts::Files::libraryPreferences         list output of /Library/Preferences"
+        puts "  Macos::Artifacts::Files::userLibraryPreferences     list output of ~/Library/Preferences"
+        puts "  Macos::Artifacts::Files::cronTabs                   list output crontabs"
+        puts "  Macos::Artifacts::Files::etcHosts                   list output of /etc/hosts file"
+        puts "  Macos::Artifacts::Files::usrLocal                   list output of /usr/local"
+        puts "  Macos::Artifacts::Files::usrLocalBin                list output of /usr/local/bin"
+        puts "  Macos::Artifacts::Files::usrLocalSbin               list output of /usr/local/sbin"
+        puts "  Macos::Artifacts::Files::usersShared                list output of /User/Shared"
+        puts "  Macos::Artifacts::Files::privateTmp                 list ooutput of /private/tmp"
+        puts "  Macos::Artifacts::Files::scriptInstallLocations     list output paths for shell, python, ruby scripts"
+        puts ""
+        puts "Macos::Artifacts::State Usage:"
+        puts "  Macos::Artifacts::State::users                      list of local users with UIDs"
+        puts "  Macos::Artifacts::State::adminUsers                 list of users in admin gropu"
+        puts "  Macos::Artifacts::State::systemExtensions           output of systemextensionctl"
+        puts "  Macos::Artifacts::State::processCPU                 top 10 CPU Processes"
+        puts "  Macos::Artifacts::State::processMemory              top 10 Memory Processes"
+        puts "  Macos::Artifacts::State::openNetworkConnections     open network connections"
+        puts "  Macos::Artifacts::State::networkInterfaces          returns network interfaces"
+        puts ""
+        puts "Macos::Artifacts::Apps Usage:"
+        puts "  Macos::Artifacts::Apps::applications                outputs main applicaitons folder with version"
+        puts "  Macos::Artifacts::Apps::packagesReceipts            outputs list of installed packages"
+        puts "  Macos::Artifacts::Apps::installHistory              outputs history of installed apps"
+        puts "  Macos::Artifacts::Apps::appInstallLocations         outputs list of appliction install paths"
+        puts ""
+      end
+      
+    end
+  end
+end

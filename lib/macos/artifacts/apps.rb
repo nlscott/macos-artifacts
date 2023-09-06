@@ -40,6 +40,48 @@ module Macos
         end
       end
 
+      def self.packagesReceipts
+        pkgReceipts = `pkgutil --packages`.split("\n") 
+        pkgReceipts.sort!
+        puts "Package Receipts: "
+      
+        pkgReceipts.each do |pkg|
+          puts "  #{pkg.strip}"
+        end
+      end
+
+      def self.installHistory
+        history = `system_profiler SPInstallHistoryDataType `.split("\n")
+        history.shift
+        history.shift
+        puts "Application Install History:"
+        history.each do |item|
+          item = item.strip
+          if ! item.empty?
+            if item.start_with?(/^Version:/)
+              puts "    #{item}"
+            elsif item.start_with?(/^Source:/)
+              puts "    #{item}"
+            elsif item.start_with?(/^Install Date:/)
+              puts "    #{item}"
+            else
+              puts "  #{item}"
+            end
+          end
+        end
+      end
+
+      def self.appInstallLocations
+        history = `mdfind "kMDItemKind == Application"`.split("\n")
+        puts "Application Install Locations:"
+        history.each do |item|
+        if ! item.start_with?("/System")
+            puts "  #{item.strip}"
+          end
+        end
+      end
+      
+
     end
   end
 end

@@ -155,6 +155,33 @@ module Macos
         end
       end
 
+      def self.openNetworkConnections
+        listOfOpenConnections = `lsof -i`.split("\n")
+        listOfOpenConnections.shift
+        puts "Open Network Connections:"
+        listOfOpenConnections.each do |line|
+          line = line.split(" ")
+          puts "  Command: #{line[0]}"
+          puts "    PID: #{line[1]}"
+          puts "    USER: #{line[2]}"
+          puts "    TYPE: #{line[4]}"
+          puts "    NODE: #{line[7]}"
+          puts "    NAME: #{line[8]}"
+        end 
+      end
+
+      def self.networkInterfaces
+        listOfNetworkInterfaces = `ifconfig`.split("\n")
+        puts "Network Interfaces:"
+        listOfNetworkInterfaces.each do |item|
+          if item.start_with?(/^*:/)
+            puts item.strip
+          else
+            puts "  #{item}"
+          end
+        end
+      end
+
     end
   end
 end
