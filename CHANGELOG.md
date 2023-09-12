@@ -2,6 +2,10 @@
 
 
 ---
+## version 0.6.1
+- Fixed: checking plist to make sure they are valid before reading them with CFPropertyList
+
+---
 ## version 0.6.0
 - Add: `help` to output options. User `Macos::Artifacts::Help::options`
 

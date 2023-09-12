@@ -28,11 +28,14 @@ module Macos
         puts "System LaunchDaemons:"
         $launchAgentDir.each do  | filename |
           if filename != "." && filename != ".."
-            puts "  #{$systemLaunchAgentsPath}/#{filename}"
-            plist = CFPropertyList::List.new(:file => "#{$systemLaunchAgentsPath}/#{filename}")
-            data = CFPropertyList.native_types(plist.value)
-            data.each do |k,v|
-              puts "    #{k}: #{v}"
+            plistLint = `plutil -lint #{$systemLaunchAgentsPath}/#{filename} | cut -d ":" -f2 | xargs`.strip
+            if plistLint == "OK"
+              puts "  #{$systemLaunchAgentsPath}/#{filename}"
+              plist = CFPropertyList::List.new(:file => "#{$systemLaunchAgentsPath}/#{filename}")
+              data = CFPropertyList.native_types(plist.value)
+              data.each do |k,v|
+                puts "    #{k}: #{v}"
+              end
             end
           end
         end
