@@ -2,6 +2,10 @@
 
 
 ---
+## version 0.6.2
+- Fixed: workaround for listing files in user directory where listing items in the .Trash resulted in an error
+
+---
 ## version 0.6.1
 - Fixed: checking plist to make sure they are valid before reading them with CFPropertyList
 

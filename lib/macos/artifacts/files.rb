@@ -75,7 +75,7 @@ module Macos
         $userHomeFolder = Dir.entries("/Users/#{$currentUser}")
         fileArray = []
         $userHomeFolder.each do  | filename |
-          if filename != "." && filename != ".."
+          if filename != "." && filename != ".." && filename != ".Trash" && filename != ".cups"
             filePath = "/Users/#{$currentUser}/#{filename}"
               fileArray.push("#{filePath}")
           end
