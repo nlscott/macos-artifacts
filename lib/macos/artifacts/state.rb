@@ -36,55 +36,66 @@ module Macos
         
         puts "System Extensions:"
         sysext.each do |line|
-      
+          
           if line.start_with?('---')
             line = line.split(" ")
-            puts "  Type: #{line[1]}"
+            $extType = line[1]
           elsif !line.start_with?("enabled")
             line = line.split(" ")
             if line[0] = "*"
-              puts "  Enabled: true"
+              extEnabled = "true"
             else
-              puts "  Enabled: false"
+              extEnabled = "false"
             end
             if line[1] = "*"
-              puts "  Active: true"
+              extActive = "true"
             else
-              puts "  Active: false"
+              extActive = "false"
             end
-            puts "  TeamID: #{line[2]}"
-            puts "  BundleID: #{line[3]}"
-            puts "  Version: #{line[4]}"
-      
+            teamID = line[2]
+            bunldeID = line[3]
+            versionExt = line[4]
+        
             if line[5] != "[activated"
               if line[6] != "[activated"
                 if line[7] != "[activated"
                   if line[8] != "[activated"
-                    puts "  Name: #{line[5]} #{line[6]} #{line[7]} #{line[8]}"
+                    nameExt = "#{line[5]} #{line[6]} #{line[7]} #{line[8]}"
                   else
-                    puts "  Name: #{line[5]} #{line[6]} #{line[7]}"
+                    nameExt = "#{line[5]} #{line[6]} #{line[7]}"
                   end
                 end
               else
-                puts "  Name: #{line[5]}"
+                nameExt = "#{line[5]}"
               end
             else
-              puts "  Name: #{line[5]}"
+              nameExt = "#{line[5]}"
             end
       
             if line[6] == "[activated"
-              puts "  State: #{line[6]} #{line[7]}"
+              stateExt = "#{line[6]} #{line[7]}"
             elsif line[7]  == "[activated"
-              puts "  State: #{line[7]} #{line[8]}"
+              stateExt = "#{line[7]} #{line[8]}"
             elsif line[8]  == "[activated"
-              puts "  State: #{line[8]} #{line[9]}"
+              stateExt = "#{line[8]} #{line[9]}"
             elsif line[9]  == "[activated"
-              puts "  State: #{line[9]} #{line[10]}"
+              stateExt = "#{line[9]} #{line[10]}"
             else
-              puts "  State: #{line[6]} #{line[7]}"
+              stateExt = "#{line[6]} #{line[7]}"
             end
+            puts "  Type: #{$extType}"
+            puts "    Enabled: #{extEnabled}"
+            puts "    Active: #{extActive}"
+            puts "    Team ID: #{teamID}"
+            puts "    Bundle ID: #{bunldeID}"
+            puts "    Version:  #{versionExt}"
+            puts "    Name: #{nameExt}"
+            puts "    State: #{stateExt}"
           end
+          
        end
+       
+      
       end
 
       def self.processCPU

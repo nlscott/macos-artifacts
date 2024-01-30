@@ -7,6 +7,7 @@ require_relative "artifacts/apps"
 require_relative "artifacts/help"
 require 'cfpropertylist'
 
+
 $currentUser = ENV['USER'] 
 
 module Macos

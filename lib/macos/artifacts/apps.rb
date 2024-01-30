@@ -1,4 +1,6 @@
 # frozen_string_literal: true
+require 'json'
+require 'date'
 
 module Macos
   module Artifacts
@@ -51,23 +53,22 @@ module Macos
       end
 
       def self.installHistory
-        history = `system_profiler SPInstallHistoryDataType `.split("\n")
-        history.shift
-        history.shift
-        puts "Application Install History:"
-        history.each do |item|
-          item = item.strip
-          if ! item.empty?
-            if item.start_with?(/^Version:/)
-              puts "    #{item}"
-            elsif item.start_with?(/^Source:/)
-              puts "    #{item}"
-            elsif item.start_with?(/^Install Date:/)
-              puts "    #{item}"
-            else
-              puts "  #{item}"
-            end
-          end
+        time =  DateTime.now
+        installs = `system_profiler -json SPInstallHistoryDataType`.strip
+        data = JSON.parse(installs)
+
+        puts "Software Install History:"
+        data["SPInstallHistoryDataType"].each do |item|
+            date = item["install_date"]
+            parsed_date = DateTime.parse(date)
+            installsDays =  (time - parsed_date).to_i
+          
+            puts "  Name: #{item["_name"]}"
+            puts "  Install Days: #{installsDays}"
+            puts "  Install Date: #{item["install_date"]}"
+            puts "  Version: #{item["install_version"]}"
+            puts "  Install Source: #{item["package_source"]}"
+            puts ""
         end
       end
 

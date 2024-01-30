@@ -8,7 +8,7 @@ Output is simple text making it able to be scraped up by an MDM or EDR solution 
 ---
 ## Installation:
 
-`sudp gem install macos-artifacts`
+`sudo gem install macos-artifacts`
 
 ---
 ## Usage:

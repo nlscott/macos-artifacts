@@ -1,6 +1,13 @@
 # Change Log
 
 
+
+---
+## version 0.6.3
+- Update: minor syntax change for System Extensions
+- Fixed: error with Apps::InstallHistory US-ASCII error
+
+
 ---
 ## version 0.6.2
 - Fixed: workaround for listing files in user directory where listing items in the .Trash resulted in an error
