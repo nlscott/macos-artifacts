@@ -16,6 +16,8 @@ Output is simple text making it able to be scraped up by an MDM or EDR solution 
 `require 'macos/artifacts'`
 
 ```ruby
+Macos::Artifacts::Help::options
+
 Macos::Artifacts::computerName
 Macos::Artifacts::serial
 Macos::Artifacts::version
@@ -35,6 +37,14 @@ Macos::Artifacts::firewallStatus
 Macos::Artifacts::screenlockStatus
 Macos::Artifacts::lockStatus
 Macos::Artifacts::softwareUpdates
+Macos::Artifacts::airDrop
+
+Macos::Artifacts::Apps::applications
+Macos::Artifacts::Apps::packagesReceipts
+Macos::Artifacts::Apps::installHistory
+Macos::Artifacts::Apps::appInstallLocations
+Macos::Artifacts::Apps::userInstalledApplications
+
 Macos::Artifacts::Files::systemLaunchAgents
 Macos::Artifacts::Files::systemLaunchDaemons
 Macos::Artifacts::Files::userLaunchAgents
@@ -44,12 +54,22 @@ Macos::Artifacts::Files::userApplicationSupport
 Macos::Artifacts::Files::libraryPreferences
 Macos::Artifacts::Files::userLibraryPreferences
 Macos::Artifacts::Files::cronTabs
+
 Macos::Artifacts::Files::etcHosts
+Macos::Artifacts::Files::usrLocal
+Macos::Artifacts::Files::usrLocalBin
+Macos::Artifacts::Files::usrLocalSbin
+Macos::Artifacts::Files::usersShared
+Macos::Artifacts::Files::privateTmp
+Macos::Artifacts::Files::scriptInstallLocations
+
 Macos::Artifacts::State::users
 Macos::Artifacts::State::adminUsers
 Macos::Artifacts::State::systemExtensions
 Macos::Artifacts::State::processCPU
 Macos::Artifacts::State::processMemory
+Macos::Artifacts::State::openNetworkConnections
+Macos::Artifacts::State::networkInterfaces
 ```
 
 

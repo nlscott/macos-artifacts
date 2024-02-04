@@ -11,14 +11,27 @@ module Macos
         $launchAgentDir = Dir.entries("#{$systemLaunchAgentsPath}")
         puts "System Launchagents:"
         $launchAgentDir.each do  | filename |
-          if filename != "." && filename != ".."
-            puts "  #{$systemLaunchAgentsPath}/#{filename}"
-            plist = CFPropertyList::List.new(:file => "#{$systemLaunchAgentsPath}/#{filename}")
-            data = CFPropertyList.native_types(plist.value)
-            data.each do |k,v|
-              puts "    #{k}: #{v}"
+            if filename != "." && filename != ".."
+                puts "  #{$systemLaunchAgentsPath}/#{filename}"
+                plistPath = "#{$systemLaunchAgentsPath}/#{filename}"
+                if File.exist?("#{plistPath}")
+                    plist = CFPropertyList::List.new(:file => "#{$systemLaunchAgentsPath}/#{filename}")
+                    data = CFPropertyList.native_types(plist.value)
+                    data.each do |k,v|
+                        puts "    #{k}: #{v}"
+                    end
+                end
+                if File.symlink?("#{plistPath}")
+                    filename = File.readlink("#{plistPath}")
+                    if File.exist?("#{filename}")
+                        plist = CFPropertyList::List.new(:file => "#{$systemLaunchAgentsPath}/#{filename}")
+                        data = CFPropertyList.native_types(plist.value)
+                        data.each do |k,v|
+                            puts "    #{k}: #{v}"
+                        end
+                    end
+                end
             end
-          end
         end
       end
 

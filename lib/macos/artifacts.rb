@@ -6,6 +6,7 @@ require_relative "artifacts/files"
 require_relative "artifacts/apps"
 require_relative "artifacts/help"
 require 'cfpropertylist'
+require 'json'
 
 
 $currentUser = ENV['USER'] 
@@ -140,6 +141,22 @@ module Macos
         puts "  Auto Install: #{automaticallyInstallMacOSUpdates}"
         puts "  Install Config Data: #{configDataInstall}"
         puts "  Install Critical Updates: #{criticalUpdateInstall}"
+      end
+    end
+
+    def self.airDrop
+      airdropUsage = `log show --style json --last 7d --predicate 'subsystem == "com.apple.sharing" AND category == "AirDrop" AND eventMessage == "Sending Ask response with code OK (200)"'`.strip
+      data = JSON.parse(airdropUsage)
+
+      puts "Airdrop Activty last 7 Days:"
+      data.each do |item|
+          # puts item
+          puts "  UserID: #{item["userID"]}"
+          puts "  Subsystem: #{item["subsystem"]}"
+          puts "  Category: #{item["category"]}"
+          puts "  Time: #{item["timestamp"]}"
+          puts "  Message: #{item["eventMessage"]}"
+          puts ""
       end
     end
   end

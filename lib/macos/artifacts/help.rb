@@ -29,6 +29,7 @@ module Macos
         puts "  Macos::Artifacts::screenlockStatus                  checks screenlock status and time" 
         puts "  Macos::Artifacts::lockStatus                        returns Activation Lock Status"
         puts "  Macos::Artifacts::softwareUpdates                   returns machines softwareupate settings"
+        puts "  Macos::Artifacts::airDrop                           returns timestamps of successful airdrops in last 7 days"
         puts ""
         puts "Macos::Artifacts::Files Usage:"
         puts "  Macos::Artifacts::Files::systemLaunchAgents         list output of installed /Library/LaunchAgents"
@@ -62,6 +63,7 @@ module Macos
         puts "  Macos::Artifacts::Apps::packagesReceipts            outputs list of installed packages"
         puts "  Macos::Artifacts::Apps::installHistory              outputs history of installed apps"
         puts "  Macos::Artifacts::Apps::appInstallLocations         outputs list of appliction install paths"
+        puts "  Macos::Artifacts::Apps::userInstalledApplications   outputs list of applictions installed in current users account"
         puts ""
       end
     end

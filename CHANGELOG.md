@@ -1,6 +1,13 @@
 # Change Log
 
 
+---
+## version 0.6.4
+- Add:  airdrop activity for the last 7 days shows timestamps. Macos::Artifacts::airDrop
+- Add: applications installed in current users account. Macos::Artifacts::Apps::userInstalledApplications
+- Fixed: IO error with Macos::Artifacts::Apps::applications when plist file didn't exist
+- Fixed: IO error with Macos::Artifacts::Files::systemLaunchAgents when is a symlink or doesn't exist
+
 
 ---
 ## version 0.6.3
