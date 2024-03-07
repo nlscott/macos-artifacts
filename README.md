@@ -1,9 +1,9 @@
 # Macos::Artifacts
 
 ## Summary:
-macOS Artifacts outpus a lot of information, from static facts about a machine (serial number, os verion), to outputs of file directories that may be usefull for discovery or reconnaissance (launchagenets and launchdaemons), to the current state of installed system extesnions.
+macOS Artifacts outputs a lot of information. From static facts about a machine (serial number, os version), to outputs of file directories that may be useful for discovery or reconnaissance (launchagents and launchdaemons), to the current state of installed system extensions.
 
-Output is simple text making it able to be scraped up by an MDM or EDR solution to aid in an investiagtion. You can copy and save to a .yaml format if you want syntax highlighting, though output format is not strictly yaml.
+Output is simple text making it able to be scraped up by an MDM or EDR solution to aid in an investigation. You can copy and save to a .yaml format if you want syntax highlighting, though the output format is not strictly yaml.
 
 ---
 ## Installation:
